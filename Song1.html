@@ -3,15 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>自動播放測試</title>
+  <title>猜歌王準備中</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000; /* 黑底 */
+      font-family: sans-serif;
+    }
+    #play-button {
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      color: #000;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=0&controls=0&rel=0&modestbranding=1" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen>
-  </iframe>
+  <div id="play-button">▶</div>
+
+  <script>
+    const button = document.getElementById('play-button');
+    button.addEventListener('click', () => {
+      // 點擊後顯示提示「請翻轉手機」
+      button.textContent = '請翻轉手機';
+      // 延遲 3 秒後跳轉到指定 YouTube
+      setTimeout(() => {
+        window.location.href = 'https://www.youtube.com/watch?v=crIP7PuC8Bc';
+      }, 3000); // 3秒，可改成5000
+    });
+  </script>
 </body>
 </html>
