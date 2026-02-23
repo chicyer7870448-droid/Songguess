@@ -3,53 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>猜歌王 - 歌1</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000; /* 黑底 */
-      font-family: sans-serif;
-    }
-    #play-button {
-      font-size: 5em;
-      color: #fff;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    #ytplayer {
-      width: 1px;  /* 幾乎不可見 */
-      height: 1px; /* 幾乎不可見 */
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border: none;
-      pointer-events: none;
-    }
-  </style>
+  <title>自動播放測試</title>
 </head>
 <body>
-  <button id="play-button">▶</button>
-
-  <iframe id="ytplayer"
-    src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1"
-    allow="autoplay"
-  ></iframe>
-
-  <script>
-    const button = document.getElementById('play-button');
-    const iframe = document.getElementById('ytplayer');
-
-    button.addEventListener('click', function() {
-      // 點擊播放，解除靜音
-      const src = iframe.src;
-      iframe.src = src.replace('&mute=1', '&mute=0');
-      button.style.display = 'none'; // 隱藏播放按鈕
-    });
-  </script>
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=0&controls=0&rel=0&modestbranding=1" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
+  </iframe>
 </body>
 </html>
