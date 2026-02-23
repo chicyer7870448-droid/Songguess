@@ -14,23 +14,22 @@
 <body>
   <h2>猜猜這首歌是什麼？</h2>
   <div id="player-wrapper">
-    <iframe id="ytplayer" src="https://www.youtube.com/embed/crIP7PuC8Bc?enablejsapi=1" allow="autoplay"></iframe>
+    <iframe id="ytplayer"
+      src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1"
+      allow="autoplay"
+    ></iframe>
     <button id="play-button">▶</button>
   </div>
 
   <script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() { player = new YT.Player('ytplayer'); }
-
+    // 當按下按鈕時解除靜音並播放
     document.getElementById('play-button').addEventListener('click', function() {
-      player.playVideo();
+      var iframe = document.getElementById('ytplayer');
+      var src = iframe.src;
+      // 加 autoplay
+      iframe.src = src + '&autoplay=1';
       this.style.display = 'none';
-      document.getElementById('ytplayer').style.pointerEvents = 'auto';
+      iframe.style.pointerEvents = 'auto';
     });
   </script>
 </body>
