@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜歌王準備中</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      font-family: sans-serif;
+      color: #fff;
+    }
+    #play-button {
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      color: #000;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+    #message {
+      font-size: 2em;
+      text-align: center;
+      min-height: 2.5em; /* 保證空間足夠顯示文字 */
+    }
+  </style>
+</head>
+<body>
+  <div id="play-button">▶</div>
+  <div id="message"></div>
+
+  <script>
+    const button = document.getElementById('play-button');
+    const message = document.getElementById('message');
+
+    button.addEventListener('click', () => {
+      // 顯示文字提示
+      message.textContent = '請翻轉手機';
+      // 隱藏按鈕（可選）
+      button.style.display = 'none';
+
+      // 延遲 3 秒後跳轉到指定 YouTube 影片（從10秒開始）
+      setTimeout(() => {
+        window.location.href = 'https://www.youtube.com/watch?v=5O7hdU7ptmY&t=10s';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
