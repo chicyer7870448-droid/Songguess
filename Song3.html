@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜歌王準備中</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      font-family: sans-serif;
+      color: #fff;
+    }
+    #play-button {
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      color: #000;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+    #message {
+      font-size: 2em;
+      text-align: center;
+      min-height: 2.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="play-button">▶</div>
+  <div id="message"></div>
+
+  <script>
+    const button = document.getElementById('play-button');
+    const message = document.getElementById('message');
+
+    // 多首歌曲陣列
+    const songs = [
+      { url: 'https://www.youtube.com/watch?v=sZXE20ScmPY', start: 131 },
+      { url: 'https://www.youtube.com/watch?v=ewqEoZL48os', start: 5 },
+      { url: 'https://www.youtube.com/watch?v=bLdTK7XnPmk', start: 30 },
+      { url: 'https://www.youtube.com/watch?v=3mEeKAdXAo4', start: 2 },
+      { url: 'https://www.youtube.com/watch?v=gPqfGpLxVIU', start: 155 }
+    ];
+
+    button.addEventListener('click', () => {
+      message.textContent = '請翻轉手機';
+      button.style.display = 'none';
+
+      // 隨機選一首歌曲
+      const choice = songs[Math.floor(Math.random() * songs.length)];
+
+      // 延遲 3 秒跳轉到指定秒數的 YouTube 影片
+      setTimeout(() => {
+        window.location.href = `${choice.url}&t=${choice.start}s`;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
