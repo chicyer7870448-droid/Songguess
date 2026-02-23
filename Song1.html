@@ -14,56 +14,41 @@
       background-color: #000; /* 黑底 */
       font-family: sans-serif;
     }
-    #player-wrapper {
-      position: relative;
-      width: 90%;
-      max-width: 560px;
-      height: 315px;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      pointer-events: none; /* 先不让用户直接点击视频 */
-    }
-    #play-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000; /* 黑色覆盖层 */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-    #play-overlay::before {
-      content: "▶"; /* 播放图标 */
+    #play-button {
       font-size: 5em;
       color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    #ytplayer {
+      width: 1px;  /* 幾乎不可見 */
+      height: 1px; /* 幾乎不可見 */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border: none;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  <div id="player-wrapper">
-    <iframe id="ytplayer"
-      src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1"
-      allow="autoplay"
-    ></iframe>
-    <div id="play-overlay"></div>
-  </div>
+  <button id="play-button">▶</button>
+
+  <iframe id="ytplayer"
+    src="https://www.youtube.com/embed/crIP7PuC8Bc?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1"
+    allow="autoplay"
+  ></iframe>
 
   <script>
-    const overlay = document.getElementById('play-overlay');
+    const button = document.getElementById('play-button');
     const iframe = document.getElementById('ytplayer');
 
-    overlay.addEventListener('click', function() {
-      // 解除靜音並播放
+    button.addEventListener('click', function() {
+      // 點擊播放，解除靜音
       const src = iframe.src;
-      iframe.src = src.replace('&mute=1', '&mute=0'); // 解除靜音
-      overlay.style.display = 'none'; // 隐藏黑色覆盖和播放图标
-      iframe.style.pointerEvents = 'auto'; // 允许用户点击视频
+      iframe.src = src.replace('&mute=1', '&mute=0');
+      button.style.display = 'none'; // 隱藏播放按鈕
     });
   </script>
 </body>
